@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="emsi_green">#008542</color>
+    <color name="light_green">#E8F5E9</color>
+    <color name="dark_green">#00592D</color>
+    <color name="gray_text">#757575</color>
+
+    <!-- Legacy colors - mapped to new theme for compatibility -->
+    <color name="purple_bg">#F5F5F5</color> <!-- White/Gray background -->
+    <color name="light_purple_card">#FFFFFF</color> <!-- White card -->
+    <color name="lavender_radar">#008542</color> <!-- Green accent -->
+    <color name="dot_color">#008542</color>
+</resources>
