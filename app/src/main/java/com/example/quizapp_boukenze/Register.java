@@ -31,7 +31,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Register extends AppCompatActivity {
     EditText etMail, etPassword, etPassword1, etName, etSchool;
@@ -40,6 +39,7 @@ public class Register extends AppCompatActivity {
     FloatingActionButton fabAddPhoto;
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
+    private double currentLat = 0, currentLon = 0;
 
     private static class CampusArea {
         String name;
@@ -67,7 +67,6 @@ public class Register extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                     Uri imageUri = result.getData().getData();
                     ivProfile.setImageURI(imageUri);
-                    // Note: Here you would ideally add face detection logic
                 }
             }
     );
@@ -154,15 +153,9 @@ public class Register extends AppCompatActivity {
                     @Override
                     public void onSuccess(Location location) {
                         if (location != null) {
-                            checkCampusInterval(location.getLatitude(), location.getLongitude());
-                        } else {
-                            fusedLocationClient.getLastLocation().addOnSuccessListener(Register.this, lastLoc -> {
-                                if (lastLoc != null) {
-                                    checkCampusInterval(lastLoc.getLatitude(), lastLoc.getLongitude());
-                                } else {
-                                    etSchool.setHint("Localisation non trouvée");
-                                }
-                            });
+                            currentLat = location.getLatitude();
+                            currentLon = location.getLongitude();
+                            checkCampusInterval(currentLat, currentLon);
                         }
                     }
                 });
@@ -179,7 +172,9 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerUser() {
+        String name = etName.getText().toString();
         String mail = etMail.getText().toString();
+        String school = etSchool.getText().toString();
         String password = etPassword.getText().toString();
         String password1 = etPassword1.getText().toString();
 
@@ -198,9 +193,22 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        Toast.makeText(getApplicationContext(), "Inscription réussie !", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(Register.this, MainActivity.class));
-        finish();
+        new Thread(() -> {
+            try {
+                User user = new User(null, mail, name, school, currentLat, currentLon);
+                SupabaseAuthHelper.register(mail, password, user);
+
+                runOnUiThread(() -> {
+                    Toast.makeText(getApplicationContext(), "Inscription réussie !", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(Register.this, MainActivity.class));
+                    finish();
+                });
+            } catch (Exception e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(Register.this, "Erreur: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
+            }
+        }).start();
     }
 
     @Override
@@ -209,8 +217,6 @@ public class Register extends AppCompatActivity {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 detectLocation();
-            } else {
-                Toast.makeText(this, "Permission de localisation refusée", Toast.LENGTH_SHORT).show();
             }
         }
     }

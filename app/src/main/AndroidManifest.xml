@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -15,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuizApp_BOUKENZE">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,23 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".Register" />
-        <activity android:name=".Quiz1" />
-        <activity android:name=".Quiz2" />
-        <activity android:name=".Quiz3" />
-        <activity android:name=".Quiz4" />
-        <activity android:name=".Quiz5" />
-        <activity android:name=".Quiz6" />
-        <activity android:name=".Quiz7" />
-        <activity android:name=".Quiz8" />
-        <activity android:name=".Quiz9" />
-        <activity android:name=".Quiz10" />
-        <activity android:name=".Quiz11" />
-        <activity android:name=".Quiz12" />
-        <activity android:name=".Quiz13" />
-        <activity android:name=".Quiz14" />
-        <activity android:name=".Quiz15" />
+        <activity android:name=".QuizActivity" />
         <activity android:name=".Score" />
+
     </application>
 
 </manifest>

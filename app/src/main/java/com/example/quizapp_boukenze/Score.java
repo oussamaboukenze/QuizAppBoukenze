@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -75,12 +76,34 @@ public class Score extends AppCompatActivity {
         // Setup Radar Chart
         setupRadarChart(sIIR, sGESI, sIAII, sGC, sGI, sGF);
 
+        // Save scores to database (only if they came from the quiz, not just viewing results)
+        if (intent.hasExtra("isNewScore")) {
+            saveScoresToDb(sIIR, sGESI, sIAII, sGC, sGI, sGF);
+        }
+
         bTry.setOnClickListener(v -> {
-            startActivity(new Intent(Score.this, Quiz1.class));
+            startActivity(new Intent(Score.this, QuizActivity.class));
             finish();
         });
 
-        bLogout.setOnClickListener(v -> finish());
+        bLogout.setOnClickListener(v -> {
+            finish();
+        });
+    }
+
+    private void saveScoresToDb(int iir, int gesi, int iaii, int gc, int gi, int gf) {
+        new Thread(() -> {
+            try {
+                SupabaseAuthHelper.saveScore(iir, gesi, iaii, gc, gi, gf);
+                runOnUiThread(() -> {
+                    Toast.makeText(Score.this, "Scores sauvegardés avec succès !", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                runOnUiThread(() -> {
+                    Toast.makeText(Score.this, "Erreur lors de la sauvegarde : " + e.getMessage(), Toast.LENGTH_LONG).show();
+                });
+            }
+        }).start();
     }
 
     private void setupRadarChart(int iir, int gesi, int iaii, int gc, int gi, int gf) {
