@@ -1,4 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">EMSI PassionMatch</string>
-    <string name="diagnostic_title">Découvrez votre Passion</string>
+    <string name="diagnostic_title">Decouvrez votre passion</string>
 </resources>

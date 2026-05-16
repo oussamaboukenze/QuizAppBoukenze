@@ -7,7 +7,5 @@ data class User(
     val id: String? = null,
     val email: String,
     val name: String,
-    val school: String,
-    val latitude: Double,
-    val longitude: Double
+    val school: String
 )

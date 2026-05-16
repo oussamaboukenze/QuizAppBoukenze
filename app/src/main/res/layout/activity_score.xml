@@ -1,209 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
+    android:background="@color/screen_bg"
+    android:clipToPadding="false"
+    android:fillViewport="true"
     tools:context=".Score">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:paddingStart="20dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="18dp">
 
-        <TextView
-            android:id="@+id/tvStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Votre Passion Dominante"
-            android:textColor="@color/black"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tvRecommendation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Basé sur votre diagnostic, voici la filière faite pour vous :"
-            android:textColor="@color/gray_text"
-            android:textSize="14sp" />
-
-        <com.github.mikephil.charting.charts.RadarChart
-            android:id="@+id/radarChart"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_marginTop="20dp" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_panel"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Votre recommandation"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvRecommendation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Votre filiere recommandee apparait ici"
+                android:textColor="@color/light_green"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_surface"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profil d'interets"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <com.github.mikephil.charting.charts.RadarChart
+                android:id="@+id/radarChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="12dp" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/containerProgress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="18dp"
             android:orientation="vertical">
 
-            <!-- IIR -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelIIR"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="IIR"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbIIR"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelIIR"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelIIR"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
 
-            <!-- GESI -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelGESI"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="GESI"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbGESI"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelGESI"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelGESI"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
 
-            <!-- IAII -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelIAII"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:text="IAII"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbIAII"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelIAII"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelIAII"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
 
-            <!-- GC -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelGC"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
-                    android:text="Génie Civil"
+                    android:layout_centerVertical="true"
+                    android:text="GC"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbGC"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelGC"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelGC"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
 
-            <!-- GI -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelGI"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
-                    android:text="G. Industriel"
+                    android:layout_centerVertical="true"
+                    android:text="GI"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbGI"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelGI"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelGI"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
 
-            <!-- GF -->
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp">
+                android:layout_height="64dp"
+                android:layout_marginBottom="18dp"
+                android:background="@drawable/bg_metric_row"
+                android:padding="14dp">
+
                 <TextView
                     android:id="@+id/labelGF"
-                    android:layout_width="100dp"
+                    android:layout_width="94dp"
                     android:layout_height="wrap_content"
-                    android:text="G. Financier"
+                    android:layout_centerVertical="true"
+                    android:text="GF"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
+
                 <ProgressBar
                     android:id="@+id/pbGF"
                     style="@android:style/Widget.ProgressBar.Horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="8dp"
-                    android:layout_toEndOf="@id/labelGF"
+                    android:layout_height="9dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginHorizontal="10dp"
-                    android:progressTint="@color/emsi_green" />
+                    android:layout_marginStart="12dp"
+                    android:layout_toEndOf="@id/labelGF"
+                    android:progressDrawable="@drawable/bg_progress_horizontal" />
             </RelativeLayout>
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="18dp"
+            android:background="@drawable/bg_surface"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Campus EMSI le plus proche"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvNearestCampus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Touchez le bouton pour utiliser le GPS et trouver le campus le plus proche."
+                android:textColor="@color/gray_text"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/bFindCampus"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="Trouver avec GPS"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/bOpenCampusMap"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_button_outline"
+                android:text="Ouvrir dans Maps"
+                android:textAllCaps="false"
+                android:textColor="@color/gray_text"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <Button
             android:id="@+id/bTry"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/emsi_green"
-            android:padding="12dp"
-            android:text="Retenter le test de passion"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Repasser le test"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            app:cornerRadius="8dp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/bLogout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@android:color/transparent"
+            android:layout_height="56dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_outline"
             android:text="Quitter"
             android:textAllCaps="false"
-            android:textColor="@color/gray_text" />
+            android:textColor="@color/gray_text"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </ScrollView>

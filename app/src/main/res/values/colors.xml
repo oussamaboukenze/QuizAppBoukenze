@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
+    <color name="black">#101915</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="emsi_green">#008542</color>
-    <color name="light_green">#E8F5E9</color>
-    <color name="dark_green">#00592D</color>
-    <color name="gray_text">#757575</color>
+    <color name="emsi_green">#007A3D</color>
+    <color name="light_green">#E8F4ED</color>
+    <color name="dark_green">#004D2A</color>
+    <color name="gray_text">#65736C</color>
+    <color name="screen_bg">#F4F7F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_muted">#EEF4F1</color>
+    <color name="stroke_soft">#DCE8E1</color>
+    <color name="accent_gold">#C99A18</color>
+    <color name="danger">#B3261E</color>
 
-    <!-- Legacy colors - mapped to new theme for compatibility -->
-    <color name="purple_bg">#F5F5F5</color> <!-- White/Gray background -->
-    <color name="light_purple_card">#FFFFFF</color> <!-- White card -->
-    <color name="lavender_radar">#008542</color> <!-- Green accent -->
-    <color name="dot_color">#008542</color>
+    <color name="purple_bg">@color/screen_bg</color>
+    <color name="light_purple_card">@color/surface</color>
+    <color name="lavender_radar">@color/emsi_green</color>
+    <color name="dot_color">@color/emsi_green</color>
 </resources>
