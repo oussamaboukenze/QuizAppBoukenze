@@ -153,6 +153,21 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/bMap"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_button_outline"
+                android:drawableStart="@android:drawable/ic_dialog_map"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/emsi_green"
+                android:text="Carte des campus EMSI"
+                android:textAllCaps="false"
+                android:textColor="@color/dark_green"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvRegister"
                 android:layout_width="match_parent"

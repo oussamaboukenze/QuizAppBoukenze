@@ -9,6 +9,19 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'QuizApp backend is running',
+    api: {
+      questions: '/api/questions',
+      register: '/api/auth/register',
+      login: '/api/auth/login',
+      saveScore: '/api/scores',
+      latestScore: '/api/scores/latest'
+    }
+  });
+});
+
 // --- Database Connection ---
 mongoose.set('bufferCommands', false);
 

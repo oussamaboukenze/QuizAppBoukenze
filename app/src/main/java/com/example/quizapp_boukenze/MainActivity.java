@@ -14,7 +14,7 @@ import kotlinx.coroutines.BuildersKt;
 
 public class MainActivity extends AppCompatActivity {
     EditText etMail, etPassword;
-    Button bLogin, bChatbot;
+    Button bLogin, bChatbot, bMap;
     TextView tvRegister;
 
     @Override
@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         bLogin = findViewById(R.id.bLogin);
         bChatbot = findViewById(R.id.bChatbot);
+        bMap = findViewById(R.id.bMap);
         tvRegister = findViewById(R.id.tvRegister);
 
         bLogin.setOnClickListener(v -> {
@@ -48,6 +49,11 @@ public class MainActivity extends AppCompatActivity {
 
         bChatbot.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, ChatbotActivity.class);
+            startActivity(intent);
+        });
+
+        bMap.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, EmsiMapActivity.class);
             startActivity(intent);
         });
     }
